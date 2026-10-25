@@ -73,7 +73,7 @@ export const Route = createFileRoute("/api/stripe-webhook")({
         const rawBody = await request.text();
         const sig = request.headers.get("stripe-signature") ?? "";
 
-        const stripe = new Stripe(SECRET_KEY, { apiVersion: "2026-04-22.dahlia" });
+        const stripe = new Stripe(SECRET_KEY, { apiVersion: "2026-09-30.endive" });
 
         let event: Stripe.Event;
         try {

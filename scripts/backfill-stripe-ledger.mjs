@@ -11,7 +11,7 @@ if (!key || !url || !serviceKey) {
   throw new Error("STRIPE_SECRET_KEY, SUPABASE_URL and SUPABASE_SERVICE_ROLE_KEY are required.");
 }
 
-const stripe = new Stripe(key, { apiVersion: "2026-04-22.dahlia" });
+const stripe = new Stripe(key, { apiVersion: "2026-09-30.endive" });
 const db = createClient(url, serviceKey, { auth: { autoRefreshToken: false, persistSession: false } });
 const counts = { invoices: 0, checkouts: 0, refunds: 0, fees: 0 };
 

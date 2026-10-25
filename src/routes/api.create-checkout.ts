@@ -30,12 +30,12 @@ export const Route = createFileRoute("/api/create-checkout")({
           );
         }
 
-        const stripe = new Stripe(SECRET_KEY, { apiVersion: "2026-04-22.dahlia" });
+        const stripe = new Stripe(SECRET_KEY, { apiVersion: "2026-09-30.endive" });
 
         const session = await stripe.checkout.sessions.create({
           mode: "subscription",
           branding_settings: { display_name: "Language Threshold" },
-          payment_method_types: ["card"],
+          allowed_payment_method_types: ["card"],
           line_items: [{ price: body.priceId, quantity: 1 }],
           subscription_data: {
             trial_period_days: 7,

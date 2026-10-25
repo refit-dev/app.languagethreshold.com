@@ -45,7 +45,7 @@ export const Route = createFileRoute("/api/cancel-subscription")({
           );
         }
 
-        const stripe = new Stripe(SECRET_KEY, { apiVersion: "2026-04-22.dahlia" });
+        const stripe = new Stripe(SECRET_KEY, { apiVersion: "2026-09-30.endive" });
 
         try {
           await stripe.subscriptions.update(subscriptionId, {

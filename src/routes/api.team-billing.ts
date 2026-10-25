@@ -82,7 +82,7 @@ export const Route = createFileRoute("/api/team-billing")({
           await requireTeamAdmin(db, orgId, user.id);
           const key = process.env.STRIPE_SECRET_KEY;
           if (!key) throw new Error("Team billing is not configured.");
-          const stripe = new Stripe(key, { apiVersion: "2026-04-22.dahlia" });
+          const stripe = new Stripe(key, { apiVersion: "2026-09-30.endive" });
           const session = await stripe.checkout.sessions.retrieve(sessionId);
           if (session.mode !== "subscription" || session.metadata?.organizationId !== orgId)
             throw new Error("This checkout does not belong to your team.");
@@ -109,7 +109,7 @@ export const Route = createFileRoute("/api/team-billing")({
           await requireTeamAdmin(db, body.orgId, user.id);
           const key = process.env.STRIPE_SECRET_KEY;
           if (!key) throw new Error("Team billing is not configured.");
-          const stripe = new Stripe(key, { apiVersion: "2026-04-22.dahlia" });
+          const stripe = new Stripe(key, { apiVersion: "2026-09-30.endive" });
           const { data: org, error: orgError } = await db
             .from("team_organizations")
             .select("name,billing_email")

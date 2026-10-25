@@ -95,13 +95,13 @@ export const Route = createFileRoute("/api/module-request")({
             .select("id")
             .single();
           if (error || !item) throw error ?? new Error("Could not save request.");
-          const stripe = new Stripe(key, { apiVersion: "2026-04-22.dahlia" });
+          const stripe = new Stripe(key, { apiVersion: "2026-09-30.endive" });
           const origin = new URL(request.url).origin;
           const session = await stripe.checkout.sessions.create(
             {
               mode: "payment",
               branding_settings: { display_name: "Language Threshold" },
-              payment_method_types: ["card"],
+              allowed_payment_method_types: ["card"],
               customer_email: user.email,
               client_reference_id: user.id,
               line_items: [
