@@ -13,7 +13,7 @@ type StripeLedgerEntry = {
 export async function backfillStripeLedger(db: TeamDb) {
   const key = process.env.STRIPE_SECRET_KEY;
   if (!key) throw new Error("Stripe billing is not configured.");
-  const stripe = new Stripe(key, { apiVersion: "2026-04-22.dahlia" });
+  const stripe = new Stripe(key, { apiVersion: "2026-09-30.endive" });
   const rows: StripeLedgerEntry[] = [];
   const counts = { invoices: 0, checkouts: 0, refunds: 0, fees: 0 };
   const add = (ref: string, amount: number, category: string, created: number) => {
